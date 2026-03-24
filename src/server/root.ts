@@ -1,5 +1,15 @@
-import { router } from "@/server/trpc";
-import { authRouter } from "@/server/routers/auth";
-import { mfaRouter } from "@/server/routers/mfa";
-export const appRouter = router({ auth: authRouter, mfa: mfaRouter });
+import { router } from "./trpc";
+import { authRouter } from "./routers/auth";
+import { mfaRouter } from "./routers/mfa";
+import { clientsRouter } from "./routers/clients";
+import { mattersRouter } from "./routers/matters";
+import { deadlinesRouter } from "./routers/deadlines";
+import { treatmentsRouter } from "./routers/treatments";
+import { contactsRouter } from "./routers/contacts";
+
+export const appRouter = router({
+  auth: authRouter, mfa: mfaRouter, clients: clientsRouter, matters: mattersRouter,
+  deadlines: deadlinesRouter, treatments: treatmentsRouter, contacts: contactsRouter,
+});
+
 export type AppRouter = typeof appRouter;
