@@ -5,5 +5,5 @@ import MatterDetailPage from "./page";
 
 describe("MatterDetailPage", () => {
   it("renders tabs", () => { render(<MatterDetailPage />); expect(screen.getByTestId("tab-overview")).toBeDefined(); expect(screen.getByTestId("tab-team")).toBeDefined(); expect(screen.getByTestId("tab-trust")).toBeDefined(); });
-  it("shows trust placeholder", () => { render(<MatterDetailPage />); fireEvent.click(screen.getByTestId("tab-trust")); expect(screen.getByText("Coming in SPR-005")).toBeDefined(); });
+  it("shows trust placeholder", () => { render(<MatterDetailPage />); fireEvent.click(screen.getByTestId("tab-trust")); expect(screen.getByTestId("matter-trust-accounts")).toBeDefined(); });
 });
