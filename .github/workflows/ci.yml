@@ -1,0 +1,52 @@
+# ============================================================================
+# GitHub Actions CI Pipeline — LexFlow Frontend
+# ============================================================================
+# Runs on PRs to main and pushes to main.
+# Jobs: install → lint → typecheck → unit test
+#
+# REF: SPR-001 T-005V (CI pipeline)
+# REF: GOV-002 (testing protocol — tests on every commit)
+# REF: GOV-003 §12.3 (ESLint profile)
+# ============================================================================
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: Lint, Typecheck & Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Unit tests
+        run: npm run test
