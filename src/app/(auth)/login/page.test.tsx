@@ -9,9 +9,9 @@ describe("LoginPage", () => {
   it("renders login form", () => {
     render(<LoginPage />);
     expect(screen.getByTestId("login-page")).toBeInTheDocument();
-    expect(screen.getByTestId("login-email")).toBeInTheDocument();
-    expect(screen.getByTestId("login-password")).toBeInTheDocument();
-    expect(screen.getByTestId("login-submit")).toBeInTheDocument();
+    expect(screen.getByTestId("email")).toBeInTheDocument();
+    expect(screen.getByTestId("password")).toBeInTheDocument();
+    expect(screen.getByTestId("sign-in")).toBeInTheDocument();
   });
   it("displays sign in heading", () => {
     render(<LoginPage />);

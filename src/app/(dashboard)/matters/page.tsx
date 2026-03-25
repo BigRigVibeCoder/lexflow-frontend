@@ -16,7 +16,7 @@ export default function MatterListPage() {
     <div data-testid="matter-list-page">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-slate-900">Matters</h1>
-        <Link href="/matters/new" className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors">New Matter</Link>
+        <Link href="/matters/new" className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors" data-testid="new-matter-btn">New Matter</Link>
       </div>
       <div className="mt-4 flex gap-3">
         <input type="text" placeholder="Search matters..." value={search} onChange={(e) => setSearch(e.target.value)} className="flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm" data-testid="matter-search" />
