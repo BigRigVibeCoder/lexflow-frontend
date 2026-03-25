@@ -8,7 +8,7 @@ export default function ClientListPage() {
     <div data-testid="client-list-page">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-slate-900">Clients</h1>
-        <Link href="/clients/new" className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors">New Client</Link>
+        <Link href="/clients/new" className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors" data-testid="new-client-btn">New Client</Link>
       </div>
       <div className="mt-4">
         <input type="text" placeholder="Search clients..." value={search} onChange={(e) => setSearch(e.target.value)} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm" data-testid="client-search" />
