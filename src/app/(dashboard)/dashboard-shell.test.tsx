@@ -15,6 +15,6 @@ describe("DashboardShell", () => {
   });
   it("shows logout button", () => {
     render(<DashboardShell user={{ name: "Test", role: "owner" }}><div>c</div></DashboardShell>);
-    expect(screen.getByTestId("logout-button")).toBeInTheDocument();
+    expect(screen.getByTestId("logout")).toBeInTheDocument();
   });
 });
