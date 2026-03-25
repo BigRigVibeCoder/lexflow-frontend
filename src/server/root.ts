@@ -8,12 +8,20 @@ import { treatmentsRouter } from "./routers/treatments";
 import { contactsRouter } from "./routers/contacts";
 import { trustRouter } from "./routers/trust";
 import { documentsRouter } from "./routers/documents";
+import { timeEntriesRouter } from "./routers/time-entries";
+import { expenseEntriesRouter } from "./routers/expense-entries";
+import { invoicesRouter } from "./routers/invoices";
+import { paymentsRouter } from "./routers/payments";
 
 export const appRouter = router({
   auth: authRouter, mfa: mfaRouter, clients: clientsRouter, matters: mattersRouter,
   deadlines: deadlinesRouter, treatments: treatmentsRouter, contacts: contactsRouter,
   trust: trustRouter,
   documents: documentsRouter,
+  timeEntries: timeEntriesRouter,
+  expenseEntries: expenseEntriesRouter,
+  invoices: invoicesRouter,
+  payments: paymentsRouter,
 });
 
 export type AppRouter = typeof appRouter;
