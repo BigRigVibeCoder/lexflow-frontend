@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import type { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { eq } from "drizzle-orm";
 import { verify } from "argon2";
@@ -10,7 +10,7 @@ import { logger } from "@/lib/logger";
 const MAX_FAIL = 5, LOCK_MS = 15 * 60 * 1000;
 const loginSchema = z.object({ email: z.string().email(), password: z.string().min(8), totpCode: z.string().length(6).optional() });
 
-export const { handlers, auth, signIn, signOut } = NextAuth({
+export const authOptions: NextAuthOptions = {
   session: { strategy: "jwt", maxAge: 8 * 60 * 60 },
   pages: { signIn: "/login", error: "/login" },
   providers: [Credentials({
@@ -38,4 +38,4 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     async jwt({ token, user }) { if (user) { token.id = user.id; token.role = (user as unknown as { role: string }).role; } return token; },
     async session({ session, token }) { if (session.user) { session.user.id = token.id as string; (session.user as { role: string }).role = token.role as string; } return session; },
   },
-});
+};

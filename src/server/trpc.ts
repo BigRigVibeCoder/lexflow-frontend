@@ -1,7 +1,8 @@
 import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
-import { auth } from "@/lib/auth";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 import { hasPermission, type UserRole, type Permission } from "@/lib/rbac";
 
 export interface TRPCContext {
@@ -10,7 +11,7 @@ export interface TRPCContext {
 }
 
 export async function createContext(opts: { req: Request }): Promise<TRPCContext> {
-  const session = await auth();
+  const session = await getServerSession(authOptions);
   return { session: session as TRPCContext["session"], ip: opts.req.headers.get("x-forwarded-for"), userAgent: opts.req.headers.get("user-agent") };
 }
 
